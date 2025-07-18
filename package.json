@@ -1,18 +1,19 @@
 {
-  "name": "node-widevine",
+  "name": "@spdl/widevine",
   "version": "0.3.1",
-  "description": "Node Widevine",
+  "description": "Node Widevine fork to be used for spdl.",
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frooastside/node-widevine.git"
+    "url": "git+https://github.com/PwLDev/node-widevine.git"
   },
-  "author": "Frooastside <frooastside@gmail.com>",
+  "author": "PwLDev",
+  "contributors": ["Frooastside <frooastside@gmail.com>"],
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/frooastside/node-widevine/issues"
+    "url": "https://github.com/PwLDev/node-widevine/issues"
   },
-  "homepage": "https://github.com/frooastside/node-widevine/",
+  "homepage": "https://github.com/PwLDev/node-widevine/",
   "main": "dist/index.js",
   "bin": {},
   "type": "module",

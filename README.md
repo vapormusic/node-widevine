@@ -1,4 +1,6 @@
-# node-widevine
+# @spdl/widevine
+This is a fork of the [node-widevine](https://github.com/Frooastside/node-widevine) library, adapted to work as a dependency for [spdl](https://github.com/PwLDev/node-spdl).
+Most of the library should work as usual.
 
 - [Disclaimer](#disclaimer)
 - [Installation](#installation)
@@ -22,19 +24,19 @@ Install the package via
 pnpm:
 
 ```bash
-pnpm install node-widevine
+pnpm install @spdl/widevine
 ```
 
 npm:
 
 ```bash
-npm install node-widevine
+npm install @spdl/widevine
 ```
 
 yarn:
 
 ```bash
-yarn add node-widevine
+yarn add @spdl/widevine
 ```
 
 ## Examples
@@ -42,7 +44,7 @@ yarn add node-widevine
 Example using bitmovin demo
 
 ```typescript
-import { LicenseType, SERVICE_CERTIFICATE_CHALLENGE, Session } from "widevine";
+import { LicenseType, SERVICE_CERTIFICATE_CHALLENGE, Session } from "@spdl/widevine";
 import { readFileSync } from "fs";
 
 //read cdm files located in the same directory

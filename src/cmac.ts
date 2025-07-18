@@ -56,11 +56,11 @@ export class AES_CMAC {
     return blockCount === 0 ? 1 : blockCount;
   }
 
-  private _aes(message: Buffer): Buffer {
+  private _aes(message: Buffer): Buffer<ArrayBuffer> {
     const cipher = crypto.createCipheriv(`aes-${this._key.length * 8}-cbc`, this._key, Buffer.alloc(this.BLOCK_SIZE));
     const result = cipher.update(message).subarray(0, 16);
     cipher.destroy();
-    return result;
+    return result as Buffer<ArrayBuffer>;
   }
 
   private _getLastBlock(message: Buffer): Buffer {

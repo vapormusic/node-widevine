@@ -101,9 +101,7 @@ export class Session {
   constructor(contentDecryptionModule: ContentDecryptionModule, pssh: Buffer) {
     // workaround for spdl
     this._devicePrivateKey = forge.pki.privateKeyFromPem(
-      "-----BEGIN RSA PRIVATE KEY-----\n" +
-      contentDecryptionModule.privateKey.toString("base64") +
-      "\n-----END RSA PRIVATE KEY-----"
+      contentDecryptionModule.privateKey
     );
 
     this._identifierBlob = fromBinary(ClientIdentificationSchema, contentDecryptionModule.identifierBlob);

@@ -18,7 +18,7 @@
   "bin": {},
   "type": "module",
   "scripts": {
-    "install": "npm install && npm build",
+    "install": "npm run build",
     "proto:compile": "npx buf generate proto",
     "lint": "eslint --ext ts .",
     "lint:fix": "eslint --fix .",

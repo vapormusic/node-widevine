@@ -18,6 +18,7 @@
   "bin": {},
   "type": "module",
   "scripts": {
+    "install": "tsc --incremental",
     "proto:compile": "npx buf generate proto",
     "lint": "eslint --ext ts .",
     "lint:fix": "eslint --fix .",

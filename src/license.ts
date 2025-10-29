@@ -99,8 +99,12 @@ export class Session {
   private _serviceCertificate?: SignedDrmCertificate;
 
   constructor(contentDecryptionModule: ContentDecryptionModule, pssh: Buffer) {
-    
-    this._devicePrivateKey = forge.pki.privateKeyFromPem(contentDecryptionModule.privateKey.toString("binary"));
+    // workaround for spdl
+    this._devicePrivateKey = forge.pki.privateKeyFromPem(
+      "-----BEGIN RSA PRIVATE KEY-----\n" +
+      contentDecryptionModule.privateKey.toString("base64") +
+      "\n-----END RSA PRIVATE KEY-----"
+    );
 
     this._identifierBlob = fromBinary(ClientIdentificationSchema, contentDecryptionModule.identifierBlob);
     this._pssh = pssh;

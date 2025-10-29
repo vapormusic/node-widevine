@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import forge from "node-forge";
 
 export class AES_CMAC {
   private readonly BLOCK_SIZE = 16;
@@ -57,10 +58,24 @@ export class AES_CMAC {
   }
 
   private _aes(message: Buffer): Buffer<ArrayBuffer> {
-    const cipher = crypto.createCipheriv(`aes-${this._key.length * 8}-cbc`, this._key, Buffer.alloc(this.BLOCK_SIZE));
-    const result = cipher.update(message).subarray(0, 16);
-    cipher.destroy();
-    return result as Buffer<ArrayBuffer>;
+    const keyBuffer = forge.util.createBuffer(Buffer.from(this._key));
+    // const cipher = crypto.createCipheriv(`aes-${this._key.length * 8}-cbc`, this._key, Buffer.alloc(this.BLOCK_SIZE));
+    // const result = cipher.update(message).subarray(0, 16);
+    // cipher.destroy();
+    const cipher = forge.cipher.createCipher('AES-CBC', keyBuffer);
+
+    const iv = forge.util.createBuffer(new Uint8Array(16), 'raw');
+    cipher.start({
+            iv: iv.getBytes()
+    });
+
+    cipher.update(forge.util.createBuffer(Buffer.from(message)));
+    cipher.finish();
+
+    const outputBuffer = cipher.output;
+    return new Uint8Array(outputBuffer.getBytes().slice(0, 16).split('').map(c => c.charCodeAt(0))) as Buffer<ArrayBuffer>;
+    
+
   }
 
   private _getLastBlock(message: Buffer): Buffer {

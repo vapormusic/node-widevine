@@ -73,7 +73,7 @@ export class AES_CMAC {
     cipher.finish();
 
     const outputBuffer = cipher.output;
-    return new Uint8Array(Buffer.from(outputBuffer)) as Buffer<ArrayBuffer>;
+    return new Uint8Array(Buffer.from(outputBuffer.data)) as Buffer<ArrayBuffer>;
     
 
   }

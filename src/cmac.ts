@@ -69,7 +69,7 @@ export class AES_CMAC {
             iv: iv.getBytes()
     });
 
-    cipher.update(forge.util.createBuffer(Buffer.from(message)));
+    cipher.update(forge.util.createBuffer(Buffer.from(message), 'raw'));
     cipher.finish();
 
     const outputBuffer = cipher.output;

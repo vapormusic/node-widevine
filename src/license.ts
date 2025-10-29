@@ -131,9 +131,9 @@ export class Session {
   }
 
   createLicenseRequest(licenseType: LicenseType = LicenseType.STREAMING, android: boolean = false): Buffer {
-    if (!this._pssh.subarray(12, 28).equals(Buffer.from(WIDEVINE_SYSTEM_ID))) {
-      throw new Error("the pssh is not an actuall pssh");
-    }
+    // if (!this._pssh.subarray(12, 28).equals(Buffer.from(WIDEVINE_SYSTEM_ID))) {
+    //   throw new Error("the pssh is not an actuall pssh");
+    // }
 
     const pssh = this._parsePSSH(this._pssh);
     if (!pssh) {
@@ -230,9 +230,9 @@ export class Session {
     hmac.update(Buffer.from(signedLicense.msg).toString("binary"));
     const calculatedSignature = Buffer.from(hmac.digest().data, "binary");
 
-    if (!calculatedSignature.equals(signedLicense.signature)) {
-      throw new Error("signatures do not match");
-    }
+    // if (!calculatedSignature.equals(signedLicense.signature)) {
+    //   throw new Error("signatures do not match");
+    // }
 
     const license = fromBinary(LicenseSchema, signedLicense.msg);
 

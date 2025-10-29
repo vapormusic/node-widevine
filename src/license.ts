@@ -87,7 +87,7 @@ export type KeyContainer = {
 };
 
 export type ContentDecryptionModule = {
-  privateKey: Buffer;
+  privateKey: string;
   identifierBlob: Buffer;
 };
 
@@ -102,7 +102,7 @@ export class Session {
     // workaround for spdl
     this._devicePrivateKey = forge.pki.privateKeyFromPem(
       "-----BEGIN RSA PRIVATE KEY-----\n" +
-      contentDecryptionModule.privateKey.toString("base64") +
+      contentDecryptionModule.privateKey +
       "\n-----END RSA PRIVATE KEY-----"
     );
 
